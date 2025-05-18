@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="10" ry="10" />
+  
+  <!-- Data Sources Section -->
+  <rect x="50" y="90" width="700" height="130" fill="#e9ecef" rx="8" ry="8" stroke="#ced4da" stroke-width="2" />
+  <text x="400" y="115" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#495057">Data Sources</text>
+  
+  <!-- Data Source Icons -->
+  <!-- Prometheus -->
+  <rect x="90" y="130" width="120" height="70" fill="#ffffff" rx="8" ry="8" stroke="#ff7043" stroke-width="2" />
+  <text x="150" y="160" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#ff7043">Prometheus</text>
+  <text x="150" y="180" font-family="Arial" font-size="12" text-anchor="middle" fill="#ff7043">MCP Server</text>
+  <text x="150" y="195" font-family="Arial" font-size="11" text-anchor="middle" fill="#495057">Metrics</text>
+  
+  <!-- Elasticsearch -->
+  <rect x="250" y="130" width="120" height="70" fill="#ffffff" rx="8" ry="8" stroke="#00bcd4" stroke-width="2" />
+  <text x="310" y="160" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#00bcd4">Elasticsearch</text>
+  <text x="310" y="180" font-family="Arial" font-size="12" text-anchor="middle" fill="#00bcd4">MCP Server</text>
+  <text x="310" y="195" font-family="Arial" font-size="11" text-anchor="middle" fill="#495057">Logs</text>
+  
+  <!-- Splunk -->
+  <rect x="410" y="130" width="120" height="70" fill="#ffffff" rx="8" ry="8" stroke="#65499c" stroke-width="2" />
+  <text x="470" y="160" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#65499c">Splunk</text>
+  <text x="470" y="180" font-family="Arial" font-size="12" text-anchor="middle" fill="#65499c">MCP Server</text>
+  <text x="470" y="195" font-family="Arial" font-size="11" text-anchor="middle" fill="#495057">Logs</text>
+  
+  <!-- Custom MCP -->
+  <rect x="570" y="130" width="120" height="70" fill="#ffffff" rx="8" ry="8" stroke="#4caf50" stroke-width="2" />
+  <text x="630" y="160" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#4caf50">Custom</text>
+  <text x="630" y="180" font-family="Arial" font-size="12" text-anchor="middle" fill="#4caf50">MCP Server</text>
+  <text x="630" y="195" font-family="Arial" font-size="11" text-anchor="middle" fill="#495057">Other Sources</text>
+  
+  <!-- Connection Lines from Data Sources to SystemHealthAI Agent -->
+  <line x1="150" y1="200" x2="320" y2="380" stroke="#ff7043" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="310" y1="200" x2="350" y2="380" stroke="#00bcd4" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="470" y1="200" x2="400" y2="380" stroke="#65499c" stroke-width="2" stroke-dasharray="5,3" />
+  <line x1="630" y1="200" x2="480" y2="380" stroke="#4caf50" stroke-width="2" stroke-dasharray="5,3" />
+  
+  <!-- System Health AI Agent -->
+  <rect x="250" y="380" width="300" height="120" fill="#f3e5f5" rx="8" ry="8" stroke="#9c27b0" stroke-width="2" />
+  <text x="400" y="410" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#7b1fa2">SystemHealthAI Agent (SHAI)</text>
+  <text x="315" y="440" font-family="Arial" font-size="14" text-anchor="start" fill="#7b1fa2">• Root Cause Analysis</text>
+  <text x="315" y="465" font-family="Arial" font-size="14" text-anchor="start" fill="#7b1fa2">• Correlation</text>
+  <text x="315" y="490" font-family="Arial" font-size="14" text-anchor="start" fill="#7b1fa2">• Insights into System Issues</text>
+  
+  <!-- LLM Providers -->
+  <rect x="620" y="380" width="140" height="120" fill="#fff8e1" rx="8" ry="8" stroke="#ffc107" stroke-width="2" />
+  <text x="690" y="405" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#ff8f00">LLM Providers</text>
+  <text x="690" y="430" font-family="Arial" font-size="12" text-anchor="middle" fill="#ff8f00">• OpenAI</text>
+  <text x="690" y="450" font-family="Arial" font-size="12" text-anchor="middle" fill="#ff8f00">• Anthropic</text>
+  <text x="690" y="470" font-family="Arial" font-size="12" text-anchor="middle" fill="#ff8f00">• Local Models</text>
+  <text x="690" y="490" font-family="Arial" font-size="12" text-anchor="middle" fill="#ff8f00">• Hugging Face</text>
+  
+  <!-- Connection Line from Agent to LLM -->
+  <line x1="550" y1="440" x2="620" y2="440" stroke="#9c27b0" stroke-width="2" stroke-dasharray="5,3" />
+  
+  <!-- Data Flow Labels -->
+  <text x="400" y="230" font-family="Arial" font-size="12" font-style="italic" text-anchor="middle" fill="#666">Metrics and Logs</text>
+  
+  <!-- Footer -->
+  <text x="400" y="545" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">SystemHealthAI: An AI SRE for Unified Monitoring and Intelligent Analysis</text>
+</svg>
