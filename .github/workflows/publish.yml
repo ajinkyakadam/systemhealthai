@@ -1,0 +1,75 @@
+name: Publish Python Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+# Required for PyPI trusted publishing
+permissions:
+  id-token: write
+  contents: write  # Required for creating tags and releases
+
+jobs:
+  check-version-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine wheel tomli
+
+      - name: Check for version bump
+        id: check-version
+        run: |
+          CURRENT_VERSION=$(python -c "
+          import tomli
+          with open('pyproject.toml', 'rb') as f:
+              data = tomli.load(f)
+          print(data['project']['version'])
+                    ")
+
+          echo "Current version: $CURRENT_VERSION"
+
+          # Check if this version already has a tag
+          if git rev-parse "v$CURRENT_VERSION" >/dev/null 2>&1; then
+            echo "Version $CURRENT_VERSION already has a tag. Skipping release."
+            echo "is_new_version=false" >> $GITHUB_OUTPUT
+          else
+            echo "New version detected: $CURRENT_VERSION"
+            echo "is_new_version=true" >> $GITHUB_OUTPUT
+            echo "new_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build package
+        if: steps.check-version.outputs.is_new_version == 'true'
+        run: |
+          python -m build
+
+      - name: Create Release
+        if: steps.check-version.outputs.is_new_version == 'true'
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.check-version.outputs.new_version }}
+          release_name: Release v${{ steps.check-version.outputs.new_version }}
+          draft: false
+          prerelease: false
+
+      - name: Publish to PyPI
+        if: steps.check-version.outputs.is_new_version == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
