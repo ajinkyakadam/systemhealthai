@@ -38,6 +38,14 @@ poetry install -e .
 
 ### Setup 
 
+#### Update `example_mcp_server_config.json`
+
+Ensure that the `example_mcp_server_config.json` file is updated with the correct configuration for your MCP servers. This assumes that the [Prometheus MCP server](https://github.com/pab1it0/prometheus-mcp-server) code is already downloaded and a Prometheus endpoint is available.
+
+1. Locate the `example_mcp_server_config.json` file in your project directory.
+2. Open the file in a text editor of your choice.
+3. Update the `prometheus_endpoint` field with the URL of your Prometheus server. For example:
+4. Save the file and ensure the MCP server is configured to use this updated configuration.
 
 ### Using SHAI
 
